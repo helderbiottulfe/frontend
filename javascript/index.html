@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The 80/20 Guide to Core JavaScript Concepts</title>
+    <style>
+        :root {
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --accent-color: #00adb5;
+            --text-primary: #eeeeee;
+            --text-secondary: #b0b0b0;
+            --border-color: #333;
+            --code-bg: #2d2d2d;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 800px;
+            padding: 40px 0;
+        }
+
+        header {
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 0;
+            color: var(--text-primary);
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: var(--accent-color);
+            margin-top: 40px;
+            border-left: 4px solid var(--accent-color);
+            padding-left: 15px;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            margin-top: 25px;
+            color: var(--text-primary);
+        }
+
+        p {
+            margin-bottom: 20px;
+            color: var(--text-secondary);
+        }
+
+        .intro {
+            font-size: 1.1rem;
+            font-style: italic;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            background-color: var(--card-bg);
+        }
+
+        th, td {
+            text-align: left;
+            padding: 15px;
+            border: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: #252525;
+            color: var(--accent-color);
+        }
+
+        code {
+            font-family: 'Fira Code', monospace;
+            background-color: var(--code-bg);
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #f08d49;
+        }
+
+        pre {
+            background-color: var(--code-bg);
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            border: 1px solid var(--border-color);
+        }
+
+        pre code {
+            background-color: transparent;
+            padding: 0;
+            color: #ccc;
+        }
+
+        .conclusion-box {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid var(--accent-color);
+            margin-top: 40px;
+        }
+
+        .conclusion-box ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .conclusion-box li {
+            margin-bottom: 15px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .conclusion-box li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        strong {
+            color: var(--text-primary);
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            td, th { padding: 10px; font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>The 80/20 Guide to Core JavaScript Concepts</h1>
+    </header>
+
+    <section>
+        <p class="intro">This guide provides an efficient summary of the most critical, foundational concepts in JavaScript. By focusing on the 20% of principles that yield 80% of the results, we concentrate on the core mechanics you will use every day to write functional, maintainable, and performant code.</p>
+    </section>
+
+    <section>
+        <h2>1. The Foundation: Integrating and Debugging</h2>
+        <p>Before writing complex logic, a developer must master how to add JavaScript to a page and how to use the browser's console to diagnose problems.</p>
+        
+        <h3>1.1. Integrating JavaScript Code Efficiently</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Benefit</th>
+                    <th>Impact</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Code Separation</td>
+                    <td>Makes files cleaner and easier to navigate.</td>
+                </tr>
+                <tr>
+                    <td>Readability</td>
+                    <td>Simplifies updating and debugging code over time.</td>
+                </tr>
+                <tr>
+                    <td>Caching</td>
+                    <td>Browsers store external JS files for faster subsequent loads.</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>A critical concept is <strong>non-blocking</strong> JavaScript. Use the <code>defer</code> attribute in your <code>&lt;script&gt;</code> tag to ensure scripts don't delay the visual rendering of the page.</p>
+
+        <h3>1.2. The JavaScript Console</h3>
+        <p>The Console is the primary channel of communication between your code and you. It serves two main functions:</p>
+        <ul>
+            <li><strong>Displaying Information:</strong> Use <code>console.log()</code> to inspect variables in real-time.</li>
+            <li><strong>Reporting Errors:</strong> It provides descriptive messages and line numbers when code fails.</li>
+        </ul>
+    </section>
+
+    
+
+    <section>
+        <h2>2. Storing Information: Variables and Data Types</h2>
+        
+        <h3>2.1. Declaring Variables: let vs. const</h3>
+        <p>Modern JavaScript uses <code>let</code> and <code>const</code>. <strong>Recommendation:</strong> Use <code>const</code> by default. Only use <code>let</code> when you know a value must change.</p>
+        <ul>
+            <li><code>let</code>: For values that change (e.g., game scores).</li>
+            <li><code>const</code>: For constants (e.g., date of birth).</li>
+        </ul>
+
+        <h3>2.2. Core Data Types</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Data Type</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>string</code></td>
+                    <td>Text characters enclosed in quotes.</td>
+                </tr>
+                <tr>
+                    <td><code>number</code></td>
+                    <td>Integers and decimals.</td>
+                </tr>
+                <tr>
+                    <td><code>boolean</code></td>
+                    <td>Logical <code>true</code> or <code>false</code>.</td>
+                </tr>
+                <tr>
+                    <td><code>null</code></td>
+                    <td>Intentional absence of a value.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>2.3. Template Literals</h3>
+        <p>Use backticks (`) and the <code>${variable}</code> syntax to embed data directly into strings:</p>
+        <pre><code>const customerFirstName = "Marie";
+const accBalance = 10;
+console.log(`Hi ${customerFirstName}. Your balance is €${accBalance}.`);</code></pre>
+    </section>
+
+    <section>
+        <h2>3. Manipulating Data</h2>
+        <h3>3.1. Numeric Operations</h3>
+        <p>JavaScript follows standard mathematical rules (PEMDAS). Use parentheses <code>()</code> to control the order of operations.</p>
+        <pre><code>5 + 2 * 3;   // 11
+(5 + 2) * 3; // 21</code></pre>
+
+        <h3>3.2. String Principles</h3>
+        <p>Strings are <strong>zero-indexed</strong> and <strong>immutable</strong>. Methods like <code>toUpperCase()</code> return a <em>new</em> string; they do not change the original.</p>
+        <pre><code>let msg = "hello";
+msg = msg.toUpperCase(); // Must reassign to save changes
+console.log(msg); // "HELLO"</code></pre>
+    </section>
+
+    
+
+    <section>
+        <h2>4. JavaScript as a Loosely-Typed Language</h2>
+        <p>JavaScript determines data types automatically at runtime. This offers <strong>flexibility</strong> for rapid development but increases the <strong>risk of errors</strong> if a variable changes type unexpectedly.</p>
+    </section>
+
+    <div class="conclusion-box">
+        <h2>5. Core Principles Recap</h2>
+        <ul>
+            <li><strong>Prioritize External Scripts:</strong> Use <code>defer</code> for performance.</li>
+            <li><strong>Master the Console:</strong> Use it to inspect and debug constantly.</li>
+            <li><strong>Default to const:</strong> Create predictable code.</li>
+            <li><strong>Remember Immutability:</strong> Always reassign modified strings.</li>
+            <li><strong>Respect Precedence:</strong> Use parentheses for math clarity.</li>
+            <li><strong>Use Template Literals:</strong> For readable string concatenation.</li>
+        </ul>
+    </div>
+</div>
+    <!--<img src="assets/image/infographic.png" alt="infographic">-->
+
+</body>
+</html>
